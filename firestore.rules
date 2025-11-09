@@ -75,7 +75,7 @@ service cloud.firestore {
      * @allow (get, update, delete) User with ID 'user_abc' can read/write their room preference: request.auth.uid == 'user_abc'.
      * @deny (create) User with ID 'user_xyz' cannot create room preference for 'user_abc': request.auth.uid == 'user_xyz'.
      * @deny (update, delete) User with ID 'user_xyz' cannot modify room preference for 'user_abc': request.auth.uid == 'user_xyz'.
-     * @principle Restricts access to a user's own data tree.
+     * @principle Restricts-access-to-a-user's-own-data-tree.
      */
     match /users/{userId}/roomPreferences/{roomPreferenceId} {
       function isOwner(userId) {
@@ -186,7 +186,7 @@ service cloud.firestore {
      * @allow (get, update, delete) User with ID 'user_abc' can read/write their feedback.
      * @deny (create) User with ID 'user_xyz' cannot create feedback for 'user_abc'.
      * @deny (update, delete) User with ID 'user_xyz' cannot modify feedback for 'user_abc'.
-     * @principle Restricts access to a user's own data tree.
+     * @principle Restricts-access-to-a-user's-own-data-tree.
      */
     match /feedback/{feedbackId} {
       function isSignedIn() {
@@ -200,3 +200,5 @@ service cloud.firestore {
     }
   }
 }
+
+    
