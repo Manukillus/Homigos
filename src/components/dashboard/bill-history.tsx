@@ -25,16 +25,6 @@ const billHistory = [
       { name: 'Wi-Fi', amount: 999, date: '2023-10-05', status: 'Paid' },
       { name: 'Electricity', amount: 1450, date: '2023-10-12', status: 'Paid' },
       { name: 'Water', amount: 550, date: '2023-10-15', status: 'Paid' },
-      { name: 'Groceries', amount: 3800, date: '2023-10-20', status: 'Paid' },
-    ],
-  },
-  {
-    month: 'September 2023',
-    items: [
-        { name: 'Wi-Fi', amount: 999, date: '2023-09-05', status: 'Paid' },
-        { name: 'Electricity', amount: 1600, date: '2023-09-12', status: 'Paid' },
-        { name: 'Water', amount: 580, date: '2023-09-15', status: 'Paid' },
-        { name: 'Groceries', amount: 4200, date: '2023-09-20', status: 'Paid' },
     ],
   },
 ];
