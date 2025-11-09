@@ -23,10 +23,10 @@ import { Receipt, Send, CreditCard } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 
 const initialBills = [
-  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Paid' },
+  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Due' },
   { name: 'Electricity', amount: 1500, due: '12th of month', status: 'Due' },
   { name: 'Water', amount: 600, due: '15th of month', status: 'Due' },
-  { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Paid' },
+  { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Due' },
 ];
 
 type Bill = {
