@@ -15,27 +15,25 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ClipboardList, Award } from 'lucide-react';
+import { ClipboardList } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 type ChoresTrackerProps = {
   roommates: Roommate[];
-  showRewards: boolean;
 };
 
 const initialChores = [
-  { chore: 'Clean Kitchen', day: 'Monday', completed: false, points: 10 },
-  { chore: 'Take out Trash', day: 'Tuesday', completed: false, points: 5 },
-  { chore: 'Clean Bathroom', day: 'Wednesday', completed: false, points: 15 },
-  { chore: 'Vaccum Living Room', day: 'Thursday', completed: false, points: 10 },
-  { chore: 'Groceries', day: 'Friday', completed: false, points: 5 },
+  { chore: 'Clean Kitchen', day: 'Monday', completed: false },
+  { chore: 'Take out Trash', day: 'Tuesday', completed: false },
+  { chore: 'Clean Bathroom', day: 'Wednesday', completed: false },
+  { chore: 'Vaccum Living Room', day: 'Thursday', completed: false },
+  { chore: 'Groceries', day: 'Friday', completed: false },
 ];
 
-export default function ChoresTracker({ roommates, showRewards }: ChoresTrackerProps) {
+export default function ChoresTracker({ roommates }: ChoresTrackerProps) {
   const { toast } = useToast();
-  const [chores, setChores] = useState(initialChores);
+  const [chores, setChores] = useState(initialChoores);
   const allMembers = [{ name: 'You' }, ...roommates];
 
   const handleChoreToggle = (choreName: string) => {
@@ -46,7 +44,7 @@ export default function ChoresTracker({ roommates, showRewards }: ChoresTrackerP
           if(updatedChore.completed) {
             toast({
               title: 'Chore Completed!',
-              description: `You earned ${chore.points} points for completing: ${chore.chore}`,
+              description: `You've completed: ${chore.chore}`,
             });
           }
           return updatedChore;
@@ -72,7 +70,6 @@ export default function ChoresTracker({ roommates, showRewards }: ChoresTrackerP
               <TableHead>Chore</TableHead>
               <TableHead>Assigned To</TableHead>
               <TableHead>Day</TableHead>
-              {showRewards && <TableHead>Points</TableHead>}
               <TableHead className="text-right">Completed</TableHead>
             </TableRow>
           </TableHeader>
@@ -84,12 +81,6 @@ export default function ChoresTracker({ roommates, showRewards }: ChoresTrackerP
                   {allMembers[index % allMembers.length].name}
                 </TableCell>
                 <TableCell className={chore.completed ? 'text-muted-foreground' : ''}>{chore.day}</TableCell>
-                {showRewards && (
-                  <TableCell className={`flex items-center gap-1 ${chore.completed ? 'text-muted-foreground' : 'text-primary font-bold'}`}>
-                    <Award className="h-4 w-4" />
-                    {chore.points}
-                  </TableCell>
-                )}
                 <TableCell className="text-right">
                    <Checkbox
                     checked={chore.completed}

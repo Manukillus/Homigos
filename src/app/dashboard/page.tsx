@@ -62,7 +62,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             <BillsTracker />
-            <ChoresTracker roommates={household} showRewards={false} />
+            <ChoresTracker roommates={household} />
           </div>
           <div className="lg:col-span-1 space-y-6">
             <RentSplit roommates={household} />
