@@ -21,6 +21,7 @@ import {
   ShieldAlert,
   Star,
   LogOut,
+  Settings,
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
@@ -63,6 +64,14 @@ const navItems = [
   },
 ];
 
+const settingsNavItems = [
+    {
+        href: '/dashboard/settings',
+        icon: Settings,
+        label: 'Settings',
+    }
+]
+
 export default function SidebarNav() {
   const pathname = usePathname();
 
@@ -94,6 +103,19 @@ export default function SidebarNav() {
       <SidebarFooter className='p-2'>
         <Separator className="my-2" />
          <SidebarMenu>
+            {settingsNavItems.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                <Link href={item.href} passHref legacyBehavior>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                    >
+                    <item.icon />
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
             <SidebarMenuItem>
                  <Link href="/" passHref legacyBehavior>
                     <SidebarMenuButton tooltip={{children: 'Logout'}}>
