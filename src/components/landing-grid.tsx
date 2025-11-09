@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { HomigosIcon } from './icons';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -56,11 +55,13 @@ export default function LandingGrid() {
         </div>
       </header>
       <main className="flex-1 container py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-          {gridItems.map((item) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {gridItems.map((item, index) => (
             <Link key={item.id} href={item.href}>
               <div
-                className="group relative aspect-[4/3] bg-cover bg-center p-6 flex flex-col justify-between text-white"
+                className={`group relative aspect-[4/3] bg-cover bg-center p-6 flex flex-col justify-between text-white ${
+                  index % 2 !== 0 ? 'md:mt-16' : ''
+                }`}
                 style={{ backgroundImage: `url(${item.image?.imageUrl})` }}
               >
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300" />
