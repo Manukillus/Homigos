@@ -8,20 +8,20 @@
     },
     {
       "id": "avatar1",
-      "description": "An AI-generated stylized image of a calculator and currency symbols, representing bill management.",
+      "description": "An AI-generated stylized image of a person at a desk with a calculator and documents, representing bill management in an indoor setting.",
       "imageUrl": "https://images.unsplash.com/photo-1655643116287-3eca9df95f05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmlsbCUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzYyNjkyNzgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "bill management"
     },
     {
       "id": "avatar2",
-      "description": "An AI-generated image of a minimalist chore chart with checkmarks, symbolizing organization and cleanliness.",
-      "imageUrl": "https://picsum.photos/seed/chores/1080/810",
+      "description": "An AI-generated image of a minimalist chore chart hanging on a clean, modern kitchen wall.",
+      "imageUrl": "https://images.unsplash.com/photo-1556911220-bff31c812dba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwY2xlYW5pbmd8ZW58MHx8fHwxNzYyODg3ODc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chore chart"
     },
     {
       "id": "avatar3",
-      "description": "An AI-generated image of a person holding a phone that displays a message-style user interface, representing the group chat feature.",
-      "imageUrl": "https://images.unsplash.com/photo-1551845843-8520a9208f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyNjkyNzc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "An AI-generated image of a person holding a phone with a message-style user interface, shown in an indoor living room setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1551845843-8520a9208f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyNjkyNzc5fDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "phone messages"
     },
     {
