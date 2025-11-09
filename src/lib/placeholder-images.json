@@ -2,32 +2,32 @@
   "placeholderImages": [
     {
       "id": "heroImage",
-      "description": "A group of friends laughing in a modern, well-lit living room, conveying a sense of community and happiness.",
-      "imageUrl": "https://images.unsplash.com/photo-1520857014576-2c7f6874b2a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmllbmRzJTIwaW4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8MTc2MjY5NzExNnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "friends living room"
+      "description": "A group of diverse friends laughing and enjoying each other's company on a comfortable sofa in a bright, modern living room.",
+      "imageUrl": "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmcmllbmRzJTIwbGF1Z2hpbmd8ZW58MHx8fHwxNzYyODg3ODc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "friends laughing"
     },
     {
       "id": "avatar1",
-      "description": "A person using a calculator, representing bill management.",
-      "imageUrl": "https://images.unsplash.com/photo-1616499370260-517b7d2f4a5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdG9yJTIwbW9uZXl8ZW58MHx8fHwxNzYyNjk3MTQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "calculator money"
+      "description": "A close-up shot of a person's hands using a calculator to split expenses, with coins and receipts on the table.",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-169544351720?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdGluZyUyMGJpbGxzfGVufDB8fHx8MTc2Mjg4NzkzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calculating bills"
     },
     {
       "id": "avatar2",
-      "description": "Cleaning supplies on a table, symbolizing organized chores.",
-      "imageUrl": "https://images.unsplash.com/photo-1583947214953-73d8a95281a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyUyMGNoZWNrbGlzdHxlbnwwfHx8fDE3NjI2OTcxNTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cleaning checklist"
+      "description": "A person wearing yellow rubber gloves is smiling while wiping down a clean kitchen counter, representing shared household chores.",
+      "imageUrl": "https://images.unsplash.com/photo-1563453392212-9293b5d20480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyUyMGhvdXNlfGVufDB8fHx8MTc2Mjg4Nzk3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cleaning house"
     },
     {
       "id": "avatar3",
-      "description": "A smartphone displaying chat bubbles, representing group communication.",
-      "imageUrl": "https://images.unsplash.com/photo-1584824486516-0555a07fc511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGF0JTIwYnViYmxlc3xlbnwwfHx8fDE3NjI2OTcxNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "chat bubbles"
+      "description": "A smartphone screen showing a vibrant group chat interface with multiple users and colorful message bubbles.",
+      "imageUrl": "https://images.unsplash.com/photo-1522069169874-c58ec4b76259?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyODg4MDAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "group chat"
     },
     {
       "id": "avatar4",
-      "description": "Avatar placeholder for a user profile.",
-      "imageUrl": "https://images.unsplash.com/photo-1569913486515-b74bf7751574?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBhdmF0YXJ8ZW58MHx8fHwxNzYyNjM2NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A professional and warm portrait of a person, suitable for a user profile avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhdmF0YXJ8ZW58MHx8fHwxNzYyODg4MDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person avatar"
     }
   ]
