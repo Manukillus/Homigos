@@ -2,26 +2,26 @@
   "placeholderImages": [
     {
       "id": "heroImage",
-      "description": "A group of diverse friends laughing and enjoying each other's company on a comfortable sofa in a bright, modern living room.",
-      "imageUrl": "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmcmllbmRzJTIwbGF1Z2hpbmd8ZW58MHx8fHwxNzYyODg3ODc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "friends laughing"
+      "description": "An AI-generated artistic image of a diverse group of friends in a stylish, modern living room, conveying a sense of community.",
+      "imageUrl": "https://images.unsplash.com/photo-1551847609-5aaf21a58ebc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmllbmRzJTIwY29tbXVuaXR5fGVufDB8fHx8MTc2MjY5Mjc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "friends community"
     },
     {
       "id": "avatar1",
-      "description": "A close-up shot of a person's hands using a calculator to split expenses, with coins and receipts on the table.",
-      "imageUrl": "https://images.unsplash.com/photo-1554224155-169544351720?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdGluZyUyMGJpbGxzfGVufDB8fHx8MTc2Mjg4NzkzMnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "calculating bills"
+      "description": "An AI-generated stylized image of a calculator and currency symbols, representing bill management.",
+      "imageUrl": "https://images.unsplash.com/photo-1758519291442-6a34815b0ae3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiaWxsJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjI2OTI3ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bill management"
     },
     {
       "id": "avatar2",
-      "description": "A person wearing yellow rubber gloves is smiling while wiping down a clean kitchen counter, representing shared household chores.",
-      "imageUrl": "https://images.unsplash.com/photo-1563453392212-9293b5d20480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyUyMGhvdXNlfGVufDB8fHx8MTc2Mjg4Nzk3MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cleaning house"
+      "description": "An AI-generated image of a minimalist chore chart with checkmarks, symbolizing organization and cleanliness.",
+      "imageUrl": "https://picsum.photos/seed/chores/1080/810",
+      "imageHint": "chore chart"
     },
     {
       "id": "avatar3",
-      "description": "A smartphone screen showing a vibrant group chat interface with multiple users and colorful message bubbles.",
-      "imageUrl": "https://images.unsplash.com/photo-1522069169874-c58ec4b76259?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyODg4MDAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "An AI-generated abstract image of interconnected speech bubbles, representing communication and group chat.",
+      "imageUrl": "https://images.unsplash.com/photo-1551845843-8520a9208f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyNjkyNzc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "group chat"
     },
     {
