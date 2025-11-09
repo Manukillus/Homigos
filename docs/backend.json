@@ -253,6 +253,10 @@
           "type": "string",
           "description": "Reference to User. (Relationship: User 1:N Complaint)"
         },
+        "title": {
+          "type": "string",
+          "description": "Title of the complaint."
+        },
         "description": {
           "type": "string",
           "description": "Description of the complaint."
@@ -261,13 +265,20 @@
           "type": "string",
           "description": "The date the complaint was submitted.",
           "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the complaint (e.g., Open, In Progress, Resolved).",
+          "enum": ["Open", "In Progress", "Resolved"]
         }
       },
       "required": [
         "id",
         "userId",
+        "title",
         "description",
-        "submissionDate"
+        "submissionDate",
+        "status"
       ]
     },
     "Feedback": {
@@ -424,14 +435,18 @@
         }
       },
       {
-        "path": "/complaints/{complaintId}",
+        "path": "/roommateGroups/{roommateGroupId}/complaints/{complaintId}",
         "definition": {
           "entityName": "Complaint",
           "schema": {
             "$ref": "#/backend/entities/Complaint"
           },
-          "description": "Stores user complaints. Limited to the submitter.",
+          "description": "Stores user complaints for a roommate group. Accessible by group members.",
           "params": [
+             {
+              "name": "roommateGroupId",
+              "description": "The unique identifier of the roommate group."
+            },
             {
               "name": "complaintId",
               "description": "The unique identifier of the complaint."
@@ -456,6 +471,6 @@
         }
       }
     ],
-    "reasoning": "The Firestore structure is designed to support the CoLiveAssist application, focusing on roommate matching and co-living management. The core principle is to ensure Authorization Independence by denormalizing necessary authorization data. This avoids the need for `get()` calls in security rules, which enhances the atomicity of operations (transactions/batches) and simplifies debugging. The structure employs path-based ownership for user-specific data and membership maps for collaborative data. Structural Segregation is used to keep data with similar access requirements within the same collections, simplifying security rules and enabling secure `list` operations (QAPs). Here's how the entities are structured:\n\n*   **/users/{userId}**: Stores user profiles. Access is restricted to the user themselves.\n*   **/users/{userId}/roommatePreferences/{roommatePreferenceId}**: Stores roommate preferences for each user. This is a subcollection of `/users/{userId}`, ensuring only the user can access their preferences. \n*   **/users/{userId}/roomPreferences/{roomPreferenceId}**: Stores room preferences for each user, similar to roommate preferences. The structure ensures ownership and simplifies security rules.\n*   **/roommateGroups/{roommateGroupId}**: Represents groups of roommates. The `roommateIds` field lists the IDs of users within the group. To ensure Authorization Independence, a `members` map is added. This map contains the UIDs of group members as keys and their roles (e.g., 'member') as values.  This structure supports QAPs by making group membership explicit within the document itself, enabling list operations scoped to a user's group memberships.\n*   **/roommateGroups/{roommateGroupId}/bills/{billId}**: Stores bills associated with a roommate group. Includes denormalized `members` from the parent `roommateGroup` document for authorization independence.\n*   **/roommateGroups/{roommateGroupId}/chores/{choreId}**: Stores chores assigned to roommates within a group. Includes denormalized `members` from the parent `roommateGroup` document to check user's group membership for authorization independence. Includes `assignedToUserId` to specify which user is assigned to this chore.\n*   **/complaints/{complaintId}**: Stores user complaints. User id is stored to trace the user who send the complaint. Limited to the submitter.\n*   **/feedback/{feedbackId}**: Stores feedback provided by users, with the same access restrictions as complaints.\n\nThis structure promotes clarity, security, and scalability, aligning with the core design principles of Authorization Independence, DBAC, QAPs, and structural segregation."
+    "reasoning": "The Firestore structure is designed to support the CoLiveAssist application, focusing on roommate matching and co-living management. The core principle is to ensure Authorization Independence by denormalizing necessary authorization data. This avoids the need for `get()` calls in security rules, which enhances the atomicity of operations (transactions/batches) and simplifies debugging. The structure employs path-based ownership for user-specific data and membership maps for collaborative data. Structural Segregation is used to keep data with similar access requirements within the same collections, simplifying security rules and enabling secure `list` operations (QAPs). Here's how the entities are structured:\n\n*   **/users/{userId}**: Stores user profiles. Access is restricted to the user themselves.\n*   **/users/{userId}/roommatePreferences/{roommatePreferenceId}**: Stores roommate preferences for each user. This is a subcollection of `/users/{userId}`, ensuring only the user can access their preferences. \n*   **/users/{userId}/roomPreferences/{roomPreferenceId}**: Stores room preferences for each user, similar to roommate preferences. The structure ensures ownership and simplifies security rules.\n*   **/roommateGroups/{roommateGroupId}**: Represents groups of roommates. The `roommateIds` field lists the IDs of users within the group. To ensure Authorization Independence, a `members` map is added. This map contains the UIDs of group members as keys and their roles (e.g., 'member') as values.  This structure supports QAPs by making group membership explicit within the document itself, enabling list operations scoped to a user's group memberships.\n*   **/roommateGroups/{roommateGroupId}/bills/{billId}**: Stores bills associated with a roommate group. Includes denormalized `members` from the parent `roommateGroup` document for authorization independence.\n*   **/roommateGroups/{roommateGroupId}/chores/{choreId}**: Stores chores assigned to roommates within a group. Includes denormalized `members` from the parent `roommateGroup` document to check user's group membership for authorization independence. Includes `assignedToUserId` to specify which user is assigned to this chore.\n*   **/roommateGroups/{roommateGroupId}/complaints/{complaintId}**: Stores user complaints within a group context, making them accessible to all group members for transparency and collaborative resolution. This replaces the private /complaints collection.\n*   **/feedback/{feedbackId}**: Stores feedback provided by users, with the same access restrictions as complaints.\n\nThis structure promotes clarity, security, and scalability, aligning with the core design principles of Authorization Independence, DBAC, QAPs, and structural segregation."
   }
 }

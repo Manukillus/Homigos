@@ -1,6 +1,5 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { useToast } from '@/hooks/use-toast';
 import {
   Card,
   CardContent,
@@ -11,23 +10,28 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { ShieldAlert } from 'lucide-react';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '../ui/form';
+import { Input } from '../ui/input';
 
-export default function ComplaintForm() {
-  const { toast } = useToast();
-  const form = useForm({
+type ComplaintFormValues = {
+  title: string;
+  description: string;
+}
+
+type ComplaintFormProps = {
+  onSubmit: (data: ComplaintFormValues) => void;
+}
+
+export default function ComplaintForm({ onSubmit }: ComplaintFormProps) {
+  const form = useForm<ComplaintFormValues>({
     defaultValues: {
-      complaint: '',
+      title: '',
+      description: '',
     },
   });
 
-  const onSubmit = () => {
-    // In a real app, this would trigger a server action to send an email.
-    toast({
-      title: 'Complaint Submitted',
-      description:
-        "Your complaint has been sent to the house owner. We'll look into it shortly.",
-    });
+  const handleFormSubmit = (data: ComplaintFormValues) => {
+    onSubmit(data);
     form.reset();
   };
 
@@ -41,23 +45,38 @@ export default function ComplaintForm() {
               File a Complaint
             </CardTitle>
             <CardDescription>
-              Your message will be sent to the house owner.
+              Your message will be tracked in the issues history.
             </CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-4">
+             <FormField
+              control={form.control}
+              name="title"
+              rules={{ required: 'Title cannot be empty.' }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., Leaky faucet in kitchen" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
-              name="complaint"
+              name="description"
               rules={{ required: 'Complaint message cannot be empty.' }}
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Describe the issue... (e.g., The Wi-Fi is down again.)"
+                      placeholder="Describe the issue... You can mention a user with @"
                       className="resize-none"
                       rows={5}
                       {...field}

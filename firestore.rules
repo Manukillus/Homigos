@@ -12,7 +12,7 @@
  * - /roommateGroups/{roommateGroupId}: Roommate groups, accessible only by group members.
  * - /roommateGroups/{roommateGroupId}/bills/{billId}: Bills associated with roommate groups, accessible only by group members.
  * - /roommateGroups/{roommateGroupId}/chores/{choreId}: Chores assigned within roommate groups, accessible only by group members and assigned user.
- * - /complaints/{complaintId}: Complaints submitted by users, accessible only by the user themselves.
+ * - /roommateGroups/{roommateGroupId}/complaints/{complaintId}: Complaints submitted by users, accessible only by group members.
  * - /feedback/{feedbackId}: Feedback submitted by users, accessible only by the user themselves.
  *
  * Key Security Decisions:
@@ -22,7 +22,7 @@
  *
  * Denormalization for Authorization:
  * - The `roommateGroups` documents contain a `members` map that explicitly lists the UIDs of all group members and their roles.
- * - The `bills` and `chores` documents are subcollections of `roommateGroups` and inherit authorization from the `members` map of their parent.
+ * - The `bills`, `chores`, and `complaints` documents are subcollections of `roommateGroups` and inherit authorization from the `members` map of their parent.
  */
 rules_version = '2';
 service cloud.firestore {
@@ -158,23 +158,25 @@ service cloud.firestore {
     }
 
     /**
-     * @description Controls access to user complaints. Only the authenticated user can read and write their own complaints.
-     * @path /complaints/{complaintId}
-     * @allow (create) User with ID 'user_abc' can create their complaint.
-     * @allow (get, update, delete) User with ID 'user_abc' can read/write their complaint.
-     * @deny (create) User with ID 'user_xyz' cannot create complaint for 'user_abc'.
-     * @deny (update, delete) User with ID 'user_xyz' cannot modify complaint for 'user_abc'.
-     * @principle Restricts access to a user's own data tree.
+     * @description Controls access to user complaints within a roommate group. Only group members can read and write.
+     * @path /roommateGroups/{roommateGroupId}/complaints/{complaintId}
+     * @allow (create) A group member can create a complaint.
+     * @allow (get, list) Group members can view all complaints.
+     * @deny (all) Non-group members cannot access complaints.
+     * @principle Enforces shared access for group-related issues.
      */
-    match /complaints/{complaintId} {
+    match /roommateGroups/{roommateGroupId}/complaints/{complaintId} {
       function isSignedIn() {
         return request.auth != null;
       }
-      allow get: if isSignedIn() && request.auth.uid == resource.data.userId;
-      allow list: if isSignedIn() && request.auth.uid == resource.data.userId;
-      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
-      allow update: if isSignedIn() && request.auth.uid == resource.data.userId && resource != null;
-      allow delete: if isSignedIn() && request.auth.uid == resource.data.userId && resource != null;
+      function isMember() {
+        return isSignedIn() && request.auth.uid in get(/databases/$(database)/documents/roommateGroups/$(roommateGroupId)).data.members;
+      }
+      allow get: if isMember();
+      allow list: if isMember();
+      allow create: if isMember() && request.auth.uid == request.resource.data.userId;
+      allow update: if isMember() && resource != null;
+      allow delete: if isMember() && resource != null;
     }
 
     /**

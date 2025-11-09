@@ -16,8 +16,18 @@ export interface Bill {
     name: string;
     amount: number;
     due: string;
-    status: 'Paid' | 'Unpaid';
+    status: 'Paid' | 'Unpaid' | 'Due';
     description: string;
     dueDate: string;
     roommateGroupId: string;
+}
+
+export interface Complaint {
+  id: string;
+  userId: string;
+  title: string;
+  description: string;
+  submissionDate: string;
+  status: 'Open' | 'In Progress' | 'Resolved';
+  roommateGroupId: string;
 }
