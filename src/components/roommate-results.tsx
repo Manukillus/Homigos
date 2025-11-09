@@ -118,6 +118,8 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
           const isSelected = selectedRoommates.some(
             (r) => r.name === roommate.name
           );
+          const rationalePoints = roommate.rationale.split('- ').filter(p => p.trim() !== '');
+
           return (
             <Card
               key={roommate.name}
@@ -152,7 +154,13 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
                 </div>
               </CardHeader>
               <CardContent>
-                <CardDescription>{roommate.rationale}</CardDescription>
+                <CardDescription asChild>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    {rationalePoints.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+                </CardDescription>
               </CardContent>
               <CardFooter>
                 <div

@@ -37,7 +37,7 @@ const RoommateMatchesOutputSchema = z.array(
   z.object({
     name: z.string().describe('Name of the potential roommate'),
     matchScore: z.number().describe('A score indicating how well the roommate matches the preferences'),
-    rationale: z.string().describe('Explanation of why this roommate is a good match'),
+    rationale: z.string().describe('Explanation of why this roommate is a good match, formatted as a bulleted list.'),
   })
 ).describe('List of potential roommates and their match scores');
 export type RoommateMatchesOutput = z.infer<typeof RoommateMatchesOutputSchema>;
@@ -72,7 +72,7 @@ const prompt = ai.definePrompt({
   - Location: {{{roomPreferences.location}}}
   - Amenities: {{{roomPreferences.amenities}}}
 
-  Find 3 potential roommates that best match these preferences. Generate a list of potential roommates. The output should be a JSON array, each object includes the roommate's name, a match score between 0 and 1, and a rationale explaining why they are a good fit. Make the names Indian.
+  Find 3 potential roommates that best match these preferences. Generate a list of potential roommates. The output should be a JSON array, each object includes the roommate's name, a match score between 0 and 1, and a rationale explaining why they are a good fit. The rationale should be a concise, bulleted list (using '-' for bullets). Make the names Indian.
   `,
 });
 
