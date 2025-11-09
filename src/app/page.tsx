@@ -1,5 +1,5 @@
-import LandingHero from '@/components/landing-hero';
+import LandingGrid from '@/components/landing-grid';
 
 export default function Home() {
-  return <LandingHero />;
+  return <LandingGrid />;
 }
