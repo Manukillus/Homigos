@@ -8,9 +8,9 @@
     },
     {
       "id": "avatar1",
-      "description": "A person sitting at a wooden table with a calculator, bills, and cash, symbolizing home budgeting and financial management.",
-      "imageUrl": "https://images.unsplash.com/photo-1554224155-16954435172b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjYWxjdWxhdG9yJTIwbW9uZXl8ZW58MHx8fHwxNzYyODg4MjQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "calculator money"
+      "description": "A couple sits together on a couch, looking at papers and a laptop, managing their household bills.",
+      "imageUrl": "https://images.unsplash.com/photo-1568252542512-72a3b9862263?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjBwYXlpbmclMjBiaWxsc3xlbnwwfHx8fDE3NjM1NTg2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple paying bills"
     },
     {
       "id": "avatar2",
