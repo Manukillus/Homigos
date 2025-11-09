@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
 import {
   Card,
@@ -17,17 +19,41 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Receipt, Send } from 'lucide-react';
+import { Receipt, Send, CreditCard } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
-const bills = [
+const initialBills = [
   { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Paid' },
   { name: 'Electricity', amount: 1500, due: '12th of month', status: 'Due' },
   { name: 'Water', amount: 600, due: '15th of month', status: 'Due' },
   { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Paid' },
 ];
 
+type Bill = {
+  name: string;
+  amount: number;
+  due: string;
+  status: 'Paid' | 'Due';
+};
+
 export default function BillsTracker() {
   const { toast } = useToast();
+  const [bills, setBills] = useState<Bill[] | null>(null);
+
+  useEffect(() => {
+    try {
+      const storedBills = localStorage.getItem('homigos-bills');
+      if (storedBills) {
+        setBills(JSON.parse(storedBills));
+      } else {
+        setBills(initialBills);
+        localStorage.setItem('homigos-bills', JSON.stringify(initialBills));
+      }
+    } catch (error) {
+      console.error('Failed to access localStorage', error);
+      setBills(initialBills);
+    }
+  }, []);
 
   const handleSendReminders = () => {
     toast({
@@ -35,6 +61,22 @@ export default function BillsTracker() {
       description: 'Payment reminders have been sent to your roommates.',
     });
   };
+
+  if (bills === null) {
+    return (
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Receipt className="h-8 w-8 text-primary" />
+            <CardTitle className="font-headline text-xl">Bills</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="h-48 flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin" />
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>
@@ -65,16 +107,21 @@ export default function BillsTracker() {
                 <TableCell>₹{bill.amount}</TableCell>
                 <TableCell>{bill.due}</TableCell>
                 <TableCell className="text-right">
-                  <Badge
-                    variant={bill.status === 'Paid' ? 'default' : 'destructive'}
-                    className={`${
-                      bill.status === 'Paid'
-                        ? 'bg-green-600'
-                        : 'bg-red-600'
-                    } text-white`}
-                  >
-                    {bill.status}
-                  </Badge>
+                  {bill.status === 'Paid' ? (
+                    <Badge
+                      variant="default"
+                      className="bg-green-600 text-white"
+                    >
+                      Paid
+                    </Badge>
+                  ) : (
+                    <Button asChild variant="destructive" size="sm">
+                       <Link href={`/dashboard/billing/pay?bill=${encodeURIComponent(bill.name)}&amount=${bill.amount}`}>
+                        <CreditCard className="mr-2 h-4 w-4" />
+                        Pay
+                      </Link>
+                    </Button>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
