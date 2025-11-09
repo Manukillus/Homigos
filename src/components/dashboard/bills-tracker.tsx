@@ -33,7 +33,7 @@ type Bill = {
   name: string;
   amount: number;
   due: string;
-  status: 'Paid' | 'Due';
+  status: 'Paid' | 'Due' | 'Unpaid';
 };
 
 export default function BillsTracker() {
@@ -109,10 +109,9 @@ export default function BillsTracker() {
                 <TableCell className="text-right">
                   {bill.status === 'Paid' ? (
                     <Badge
-                      variant="default"
-                      className="bg-green-600 text-white"
+                      variant="destructive"
                     >
-                      Paid
+                      Unpaid
                     </Badge>
                   ) : (
                     <Button asChild variant="destructive" size="sm">
