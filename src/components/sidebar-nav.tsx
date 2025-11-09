@@ -86,13 +86,16 @@ export default function SidebarNav() {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref legacyBehavior>
+              <Link href={item.href} passHref>
                 <SidebarMenuButton
                   isActive={pathname === item.href}
                   tooltip={{ children: item.label }}
+                  asChild
                 >
-                  <item.icon />
-                  <span>{item.label}</span>
+                  <div>
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </div>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
@@ -104,22 +107,27 @@ export default function SidebarNav() {
          <SidebarMenu>
             {settingsNavItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                <Link href={item.href} passHref legacyBehavior>
+                <Link href={item.href} passHref>
                     <SidebarMenuButton
-                    isActive={pathname === item.href}
-                    tooltip={{ children: item.label }}
+                      isActive={pathname === item.href}
+                      tooltip={{ children: item.label }}
+                      asChild
                     >
-                    <item.icon />
-                    <span>{item.label}</span>
+                      <div>
+                        <item.icon />
+                        <span>{item.label}</span>
+                      </div>
                     </SidebarMenuButton>
                 </Link>
                 </SidebarMenuItem>
             ))}
             <SidebarMenuItem>
-                 <Link href="/" passHref legacyBehavior>
-                    <SidebarMenuButton tooltip={{children: 'Logout'}}>
-                        <LogOut />
-                        <span>Logout</span>
+                 <Link href="/" passHref>
+                    <SidebarMenuButton tooltip={{children: 'Logout'}} asChild>
+                        <div>
+                          <LogOut />
+                          <span>Logout</span>
+                        </div>
                     </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
