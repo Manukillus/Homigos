@@ -2,31 +2,31 @@
   "placeholderImages": [
     {
       "id": "heroImage",
-      "description": "An AI-generated artistic image of a diverse group of friends in a stylish, modern living room, conveying a sense of community.",
-      "imageUrl": "https://images.unsplash.com/photo-1580849279061-0179c4ebf14e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmcmllbmRzJTIwY29tbXVuaXR5fGVufDB8fHx8MTc2MjY5Mjc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "friends community"
+      "description": "An AI-generated artistic image of a diverse group of young Indian friends in a stylish, modern apartment living room in a city like Indore, conveying a sense of community.",
+      "imageUrl": "https://images.unsplash.com/photo-1552084044-a636d45b4545?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxJbmRpYW4lMjBmcmllbmRzJTIwaW5kb29yfGVufDB8fHx8MTc2Mjg4ODM3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Indian friends community"
     },
     {
       "id": "avatar1",
-      "description": "An AI-generated stylized image of a person at a desk with a calculator and documents, representing bill management in an indoor setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1655643116287-3eca9df95f05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmlsbCUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzYyNjkyNzgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "bill management"
+      "description": "An AI-generated image of a person at a desk in a modern Indian home, with a laptop showing a spreadsheet, a calculator, and a cup of chai, representing bill management.",
+      "imageUrl": "https://images.unsplash.com/photo-1593344484962-796b36d48b13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxJbmRpYW4lMjBob21lJTIwZmluYW5jZXxlbnwwfHx8fDE3NjI4ODg0NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Indian bill management"
     },
     {
       "id": "avatar2",
-      "description": "An AI-generated image of a minimalist chore chart hanging on a clean, modern kitchen wall.",
-      "imageUrl": "https://images.unsplash.com/photo-1556911220-bff31c812dba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwY2xlYW5pbmd8ZW58MHx8fHwxNzYyODg3ODc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "chore chart"
+      "description": "An AI-generated image of a clean, contemporary Indian kitchen with a whiteboard on the wall displaying a chore list.",
+      "imageUrl": "https://images.unsplash.com/photo-1627483262268-9c2b5b2834b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxJbmRpYW4lMjBraXRjaGVufGVufDB8fHx8MTc2Mjg4ODQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Indian kitchen chore"
     },
     {
       "id": "avatar3",
-      "description": "An AI-generated image of a person holding a phone with a message-style user interface, shown in an indoor living room setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1551845843-8520a9208f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyNjkyNzc5fDA&ixlibrb-4.1.0&q=80&w=1080",
-      "imageHint": "phone messages"
+      "description": "An AI-generated image of a young Indian person sitting on a balcony with a city view, smiling while looking at a group chat on their smartphone.",
+      "imageUrl": "https://images.unsplash.com/photo-1600050802288-1a0679730d75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxJbmRpYW4lMjBwZXJzb24lMjBwaG9uZXxlbnwwfHx8fDE3NjI4ODg1MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Indian person phone"
     },
     {
       "id": "avatar4",
-      "description": "A professional and warm portrait of a person, suitable for a user profile avatar.",
+      "description": "A professional and warm portrait of a young Indian person, suitable for a user profile avatar.",
       "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhdmF0YXJ8ZW58MHx8fHwxNzYyODg4MDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person avatar"
     }
