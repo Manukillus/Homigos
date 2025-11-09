@@ -6,9 +6,7 @@ export default function BillingPage() {
     <div className="flex flex-col h-screen">
       <Header title="Billing" />
       <div className="flex-1 p-6 overflow-y-auto">
-        <div className="container mx-auto">
-          <BillsTracker />
-        </div>
+        <BillsTracker />
       </div>
     </div>
   );
