@@ -3,8 +3,8 @@
     {
       "id": "heroImage",
       "description": "An AI-generated artistic image of a diverse group of young Indian friends laughing and talking in a modern, stylish apartment living room with warm, inviting indoor lighting.",
-      "imageUrl": "https://images.unsplash.com/photo-1552084044-a636d45b4545?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxJbmRpYW4lMjBmcmllbmRzJTIwaW5kb29yfGVufDB8fHx8MTc2Mjg4ODM3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "friends indoor living room"
+      "imageUrl": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmllbmRzJTIwbGF1Z2hpbmclMjBpbmRvb3J8ZW58MHx8fHwxNzYyODg3NDg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "friends laughing indoor"
     },
     {
       "id": "avatar1",
@@ -27,7 +27,7 @@
     {
       "id": "avatar4",
       "description": "A professional and warm portrait of a young Indian person, suitable for a user profile avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhdmF0YXJ8ZW58MHx8fHwxNzYyODg4MDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhdmF0YXJ8ZW58MHx8fHwxNzYyODg4MDMxfDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "person avatar"
     }
   ]
