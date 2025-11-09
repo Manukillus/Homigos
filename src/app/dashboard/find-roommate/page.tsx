@@ -9,9 +9,7 @@ import RoommateResults from '@/components/roommate-results';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Header from '@/components/header';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 type Step = 'form' | 'loading' | 'results';
 

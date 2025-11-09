@@ -1,5 +1,4 @@
 'use client';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from './ui/button';
 import { ArrowLeft, Bell, User, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -35,7 +34,6 @@ export default function Header({ title, showBackButton = false }: HeaderProps) {
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center justify-between px-6">
         <div className="flex items-center gap-4">
-          <SidebarTrigger className="md:hidden" />
           {showBackButton && (
             <Button
               variant="ghost"

@@ -75,7 +75,7 @@ export default function SidebarNav() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
           <HomigosIcon className="h-7 w-7 text-primary" />
@@ -89,7 +89,6 @@ export default function SidebarNav() {
               <Link href={item.href} passHref>
                 <SidebarMenuButton
                   isActive={pathname === item.href}
-                  tooltip={{ children: item.label }}
                   asChild
                 >
                   <div>
@@ -110,7 +109,6 @@ export default function SidebarNav() {
                 <Link href={item.href} passHref>
                     <SidebarMenuButton
                       isActive={pathname === item.href}
-                      tooltip={{ children: item.label }}
                       asChild
                     >
                       <div>
@@ -123,7 +121,7 @@ export default function SidebarNav() {
             ))}
             <SidebarMenuItem>
                  <Link href="/" passHref>
-                    <SidebarMenuButton tooltip={{children: 'Logout'}} asChild>
+                    <SidebarMenuButton asChild>
                         <div>
                           <LogOut />
                           <span>Logout</span>
