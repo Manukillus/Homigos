@@ -30,8 +30,8 @@ export default function ChatPage() {
   return (
     <div className="h-screen flex flex-col">
       <Header title="Chat" />
-      <div className="flex-1 p-6 overflow-hidden">
-        <div className="h-full grid grid-cols-1 gap-6">
+      <div className="flex-1 overflow-hidden">
+        <div className="h-full">
             <GroupChat roommates={household} />
         </div>
       </div>

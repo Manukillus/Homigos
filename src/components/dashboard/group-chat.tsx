@@ -46,7 +46,7 @@ function ChatWindow({
   isAiChat: boolean;
 }) {
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex flex-col h-full rounded-none border-0">
       <CardHeader>
         <div className="flex items-center gap-4">
           {isAiChat ? (
@@ -61,7 +61,7 @@ function ChatWindow({
         </div>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col justify-between gap-4 overflow-hidden">
-        <div className="space-y-4 overflow-y-auto pr-2 flex-1">
+        <div className="space-y-4 overflow-y-auto pr-2 flex-1 p-4">
           {messages.map((msg, index) => (
             <div
               key={index}
@@ -116,7 +116,7 @@ function ChatWindow({
         </div>
         <form
           onSubmit={handleSendMessage}
-          className="flex w-full items-center space-x-2"
+          className="flex w-full items-center space-x-2 p-4 border-t"
         >
           <Input
             type="text"
@@ -197,10 +197,12 @@ export default function GroupChat({ roommates }: GroupChatProps) {
 
   return (
     <Tabs defaultValue="ai" className="w-full h-full flex flex-col">
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="ai">Chat with AI</TabsTrigger>
-        <TabsTrigger value="roommates">Chat with Roommates</TabsTrigger>
-      </TabsList>
+      <div className="px-4 pt-4">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="ai">Chat with AI</TabsTrigger>
+          <TabsTrigger value="roommates">Chat with Roommates</TabsTrigger>
+        </TabsList>
+      </div>
       <TabsContent value="ai" className="flex-1 mt-0">
         <ChatWindow
           messages={aiMessages}
