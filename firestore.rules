@@ -118,17 +118,14 @@ service cloud.firestore {
      * @principle Enforces shared access based on group membership.
      */
     match /roommateGroups/{roommateGroupId}/bills/{billId} {
-      function isSignedIn() {
-        return request.auth != null;
+      function isMember(groupId) {
+        return request.auth != null && request.auth.uid in get(/databases/$(database)/documents/roommateGroups/$(groupId)).data.members;
       }
-      function isMember() {
-        return isSignedIn() && request.auth.uid in get(/databases/$(database)/documents/roommateGroups/$(roommateGroupId)).data.members;
-      }
-       allow get: if isMember();
-       allow list: if isMember();
-       allow create: if isMember();
-       allow update: if isMember() && resource != null;
-       allow delete: if isMember() && resource != null;
+       allow get: if isMember(roommateGroupId);
+       allow list: if isMember(roommateGroupId);
+       allow create: if isMember(roommateGroupId);
+       allow update: if isMember(roommateGroupId) && resource != null;
+       allow delete: if isMember(roommateGroupId) && resource != null;
     }
 
     /**
