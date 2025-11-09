@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import ComplaintForm from '@/components/dashboard/complaint-form';
 import Header from '@/components/header';
 import {
@@ -9,6 +10,14 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   useCollection,
@@ -19,13 +28,14 @@ import {
 } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import type { RoommateGroup, Complaint } from '@/lib/types';
-import { Loader2 } from 'lucide-react';
+import { Loader2, PlusCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function IssuesPage() {
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const groupsQuery = useMemoFirebase(
     () =>
@@ -84,6 +94,7 @@ export default function IssuesPage() {
       description:
         'Your complaint has been submitted and is now being tracked.',
     });
+    setIsDialogOpen(false);
   };
 
   const isLoading = isUserLoading || isGroupsLoading || isComplaintsLoading;
@@ -91,60 +102,70 @@ export default function IssuesPage() {
   return (
     <>
       <Header title="Issues" />
-      <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <Card>
-            <CardHeader>
+      <div className="p-6">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
               <CardTitle>Issues History</CardTitle>
               <CardDescription>
                 Track the status of reported issues.
               </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {isLoading ? (
-                <div className="flex justify-center items-center h-48">
-                  <Loader2 className="h-8 w-8 animate-spin" />
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {(complaints || []).map((issue) => (
-                    <div
-                      key={issue.id}
-                      className="flex items-center justify-between rounded-md border p-4"
-                    >
-                      <div>
-                        <p className="font-medium">{issue.title}</p>
-                        <p className="text-sm text-muted-foreground">
-                          Reported on{' '}
-                          {new Date(issue.submissionDate).toLocaleDateString()}
-                        </p>
-                      </div>
-                      <Badge
-                        variant={
-                          issue.status === 'Resolved'
-                            ? 'default'
-                            : issue.status === 'In Progress'
-                            ? 'secondary'
-                            : 'destructive'
-                        }
-                        className={
-                          issue.status === 'Resolved'
-                            ? 'bg-green-600 text-white'
-                            : ''
-                        }
-                      >
-                        {issue.status}
-                      </Badge>
+            </div>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button>
+                  <PlusCircle className="mr-2" /> Report New Issue
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>File a new complaint</DialogTitle>
+                </DialogHeader>
+                <ComplaintForm onSubmit={handleAddComplaint} />
+              </DialogContent>
+            </Dialog>
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <div className="flex justify-center items-center h-48">
+                <Loader2 className="h-8 w-8 animate-spin" />
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {(complaints || []).map((issue) => (
+                  <div
+                    key={issue.id}
+                    className="flex items-center justify-between rounded-md border p-4"
+                  >
+                    <div>
+                      <p className="font-medium">{issue.title}</p>
+                      <p className="text-sm text-muted-foreground">
+                        Reported on{' '}
+                        {new Date(issue.submissionDate).toLocaleDateString()}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-        <div>
-          <ComplaintForm onSubmit={handleAddComplaint} />
-        </div>
+                    <Badge
+                      variant={
+                        issue.status === 'Resolved'
+                          ? 'default'
+                          : issue.status === 'In Progress'
+                          ? 'secondary'
+                          : 'destructive'
+                      }
+                      className={
+                        issue.status === 'Resolved'
+                          ? 'bg-green-600 text-white'
+                          : ''
+                      }
+                    >
+                      {issue.status}
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </>
   );
