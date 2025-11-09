@@ -3,26 +3,26 @@
     {
       "id": "heroImage",
       "description": "A group of friends laughing in a modern, well-lit living room, conveying a sense of community and happiness.",
-      "imageUrl": "https://images.unsplash.com/photo-1692188071339-2825a8a997f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmllbmRzJTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3NjI2ODMyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1520857014576-2c7f6874b2a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmllbmRzJTIwaW4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8MTc2MjY5NzExNnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "friends living room"
     },
     {
       "id": "avatar1",
-      "description": "Avatar placeholder for a user profile.",
-      "imageUrl": "https://images.unsplash.com/photo-1750535135451-7c20e24b60c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBhdmF0YXJ8ZW58MHx8fHwxNzYyNjM2NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person avatar"
+      "description": "A person using a calculator, representing bill management.",
+      "imageUrl": "https://images.unsplash.com/photo-1616499370260-517b7d2f4a5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdG9yJTIwbW9uZXl8ZW58MHx8fHwxNzYyNjk3MTQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calculator money"
     },
     {
       "id": "avatar2",
-      "description": "Avatar placeholder for a user profile.",
-      "imageUrl": "https://images.unsplash.com/photo-1750535135645-005e250ff210?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwYXZhdGFyfGVufDB8fHx8MTc2MjYzNjQwOXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person avatar"
+      "description": "Cleaning supplies on a table, symbolizing organized chores.",
+      "imageUrl": "https://images.unsplash.com/photo-1583947214953-73d8a95281a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyUyMGNoZWNrbGlzdHxlbnwwfHx8fDE3NjI2OTcxNTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cleaning checklist"
     },
     {
       "id": "avatar3",
-      "description": "Avatar placeholder for a user profile.",
-      "imageUrl": "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBhdmF0YXJ8ZW58MHx8fHwxNzYyNjM2NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person avatar"
+      "description": "A smartphone displaying chat bubbles, representing group communication.",
+      "imageUrl": "https://images.unsplash.com/photo-1584824486516-0555a07fc511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGF0JTIwYnViYmxlc3xlbnwwfHx8fDE3NjI2OTcxNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chat bubbles"
     },
     {
       "id": "avatar4",
