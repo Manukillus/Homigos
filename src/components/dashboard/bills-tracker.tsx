@@ -30,9 +30,10 @@ import type { RoommateGroup, Bill } from '@/lib/types';
 import Link from 'next/link';
 
 const initialBills = [
-  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Unpaid' },
   { name: 'Electricity', amount: 1500, due: '12th of month', status: 'Unpaid' },
   { name: 'Water', amount: 600, due: '15th of month', status: 'Unpaid' },
+  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Unpaid' },
+  { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Unpaid' },
 ];
 
 export default function BillsTracker() {

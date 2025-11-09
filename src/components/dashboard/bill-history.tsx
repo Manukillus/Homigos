@@ -25,6 +25,7 @@ const billHistory = [
       { name: 'Wi-Fi', amount: 999, date: '2023-10-05', status: 'Paid' },
       { name: 'Electricity', amount: 1450, date: '2023-10-12', status: 'Paid' },
       { name: 'Water', amount: 550, date: '2023-10-15', status: 'Paid' },
+      { name: 'Groceries', amount: 4000, date: '2023-10-20', status: 'Paid' },
     ],
   },
 ];
