@@ -8,6 +8,10 @@ import PreferenceForm from '@/components/preference-form';
 import RoommateResults from '@/components/roommate-results';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import Header from '@/components/header';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
 
 type Step = 'form' | 'loading' | 'results';
 
@@ -71,5 +75,10 @@ export default function FindRoommatePage() {
     }
   };
 
-  return <div className="container py-12">{renderStep()}</div>;
+  return (
+    <>
+    <Header title="Find a Roommate" showBackButton />
+    <div className="container py-12">{renderStep()}</div>
+    </>
+  );
 }
