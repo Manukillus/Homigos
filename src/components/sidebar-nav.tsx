@@ -32,7 +32,7 @@ const navItems = [
     label: 'Dashboard',
   },
   {
-    href: '/find-roommate',
+    href: '/dashboard/find-roommate',
     icon: UserPlus,
     label: 'Add Roommates',
   },

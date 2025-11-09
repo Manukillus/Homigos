@@ -48,7 +48,7 @@ export default function DashboardPage() {
             It looks like you haven&apos;t created a household yet.
           </p>
           <Button asChild className="mt-6">
-            <Link href="/find-roommate">Find Roommates to Get Started</Link>
+            <Link href="/dashboard/find-roommate">Find Roommates to Get Started</Link>
           </Button>
         </div>
       </>

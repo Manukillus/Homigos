@@ -67,7 +67,7 @@ export default function LandingHero() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg">
-                    <Link href="/find-roommate">
+                    <Link href="/dashboard/find-roommate">
                       Find Your Roommate <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>

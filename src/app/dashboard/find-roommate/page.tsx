@@ -12,7 +12,6 @@ import Header from '@/components/header';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { SidebarProvider } from '@/components/ui/sidebar';
 
 type Step = 'form' | 'loading' | 'results';
 
@@ -77,13 +76,11 @@ export default function FindRoommatePage() {
   };
 
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen flex-col">
-        <Header title="Find a Roommate" showBackButton />
-        <main className="flex-1 bg-secondary/20">
-          <div className="container py-12">{renderStep()}</div>
-        </main>
+    <>
+      <Header title="Find a Roommate" />
+      <div className="flex-1 bg-secondary/20 p-6">
+        <div className="container py-12">{renderStep()}</div>
       </div>
-    </SidebarProvider>
+    </>
   );
 }
