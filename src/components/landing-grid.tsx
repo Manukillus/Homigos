@@ -58,14 +58,14 @@ export default function LandingGrid() {
           </Button>
         </div>
       </header>
-      <main className="flex-1">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+      <main className="flex-1 container py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {gridItems.map((item, index) => {
             const placeholder = PlaceHolderImages.find(
               (img) => img.id === item.imageId
             );
             return (
-              <Link key={item.id} href={item.href}>
+              <Link key={item.id} href={item.href} className={index % 2 !== 0 ? 'md:mt-16' : ''}>
                 <div className="group relative aspect-[4/3] overflow-hidden">
                   {placeholder && (
                     <Image
