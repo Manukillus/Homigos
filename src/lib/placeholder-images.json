@@ -19,10 +19,10 @@
       "imageHint": "cleaning checklist"
     },
     {
-      "id": "avatar3",
-      "description": "An AI-generated image of a young Indian person sitting on a comfortable couch indoors, smiling while looking at a group chat on their smartphone.",
+      "id": "group-chat",
+      "description": "An illustration of a diverse group of people sitting together and communicating, representing a group chat or community.",
       "imageUrl": "https://images.unsplash.com/photo-1554230522-371231d68a52?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "chat bubbles"
+      "imageHint": "people talking illustration"
     },
     {
       "id": "avatar4",
