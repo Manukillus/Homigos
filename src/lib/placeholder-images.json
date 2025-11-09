@@ -9,7 +9,7 @@
     {
       "id": "avatar1",
       "description": "A couple sits together on a couch, looking at papers and a laptop, managing their household bills.",
-      "imageUrl": "https://storage.googleapis.com/studioprompt-content/949e29f8-085e-4734-9333-3d3f4a3bd216.png",
+      "imageUrl": "https://images.unsplash.com/photo-1576404878433-a864703b44b8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "couple paying bills"
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": "avatar3",
       "description": "An AI-generated image of a young Indian person sitting on a comfortable couch indoors, smiling while looking at a group chat on their smartphone.",
-      "imageUrl": "https://images.unsplash.com/photo-1600050802288-1a0679730d75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxJbmRpYW4lMjBwZXJzb24lMjBwaG9uZXxlbnwwfHx8fDE3NjI4ODg1MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1554230522-371231d68a52?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "chat bubbles"
     },
     {
