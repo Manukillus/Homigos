@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from '@/components/ui/card';
 import {
   Table,
@@ -17,7 +18,7 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Receipt, Send, CreditCard } from 'lucide-react';
+import { Receipt, Send, CreditCard, Users, User } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 import {
   useCollection,
@@ -29,11 +30,11 @@ import { collection, query, where, doc, addDoc } from 'firebase/firestore';
 import type { RoommateGroup, Bill } from '@/lib/types';
 import Link from 'next/link';
 
-const initialBills = [
-  { name: 'Electricity', amount: 1500, due: '12th of month', status: 'Unpaid' },
-  { name: 'Water', amount: 600, due: '15th of month', status: 'Unpaid' },
-  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Unpaid' },
-  { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Unpaid' },
+const initialBills: Omit<Bill, 'id' | 'roommateGroupId' | 'dueDate'>[] = [
+  { name: 'Electricity', amount: 1500, due: '12th of month', status: 'Unpaid', description: 'Electricity Bill' },
+  { name: 'Water', amount: 600, due: '15th of month', status: 'Unpaid', description: 'Water Bill' },
+  { name: 'Wi-Fi', amount: 999, due: '5th of month', status: 'Unpaid', description: 'Wi-Fi Bill' },
+  { name: 'Groceries', amount: 4000, due: '20th of month', status: 'Unpaid', description: 'Groceries' },
 ];
 
 export default function BillsTracker() {
@@ -78,7 +79,6 @@ export default function BillsTracker() {
     for (const bill of initialBills) {
       await addDoc(billsCollectionRef, {
         ...bill,
-        description: bill.name, // using name as description for simplicity
         dueDate: new Date().toISOString(),
         roommateGroupId: groupId
       });
@@ -94,6 +94,11 @@ export default function BillsTracker() {
   ) {
     seedBills(currentGroup.id);
   }
+  
+  const unpaidBills = bills?.filter((bill) => bill.status === 'Unpaid') || [];
+  const totalDue = unpaidBills.reduce((acc, bill) => acc + bill.amount, 0);
+  const totalMembers = (currentGroup?.roommates?.length || 0) + 1;
+  const amountPerPerson = totalDue / totalMembers;
 
   const handleSendReminders = () => {
     toast({
@@ -131,6 +136,29 @@ export default function BillsTracker() {
         </Button>
       </CardHeader>
       <CardContent>
+        <div className="bg-secondary p-4 rounded-lg mb-6">
+            <CardHeader className="p-2">
+                <CardTitle className="text-lg">Total Due</CardTitle>
+                <CardDescription>
+                    The total amount for all unpaid bills this month.
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="p-2">
+                <div className="text-3xl font-bold">₹{totalDue.toLocaleString('en-IN')}</div>
+                <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
+                    <div className="flex items-center gap-2">
+                        <Users className="text-muted-foreground" />
+                        <span>{totalMembers} Roommates</span>
+                    </div>
+                     <div className="flex items-center gap-2">
+                        <User className="text-muted-foreground" />
+                        <span>₹{amountPerPerson.toLocaleString('en-IN', {maximumFractionDigits: 0})}/person</span>
+                    </div>
+                </div>
+            </CardContent>
+        </div>
+
+
         <Table>
           <TableHeader>
             <TableRow>
