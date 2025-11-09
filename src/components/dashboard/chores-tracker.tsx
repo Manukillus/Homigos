@@ -33,7 +33,7 @@ const initialChores = [
 
 export default function ChoresTracker({ roommates }: ChoresTrackerProps) {
   const { toast } = useToast();
-  const [chores, setChores] = useState(initialChoores);
+  const [chores, setChores] = useState(initialChores);
   const allMembers = [{ name: 'You' }, ...roommates];
 
   const handleChoreToggle = (choreName: string) => {
