@@ -12,28 +12,28 @@ const gridItems = [
     title: 'Find Your Tribe',
     description: 'AI-powered matching to find compatible roommates.',
     href: '/dashboard/find-roommate',
-    image: PlaceHolderImages.find(img => img.id === 'heroImage'),
+    image: PlaceHolderImages.find((img) => img.id === 'heroImage'),
   },
   {
     id: 'manage-bills',
     title: 'Manage Bills',
     description: 'Split bills and track payments seamlessly.',
     href: '/dashboard/billing',
-    image: PlaceHolderImages.find(img => img.id === 'avatar1'),
+    image: PlaceHolderImages.find((img) => img.id === 'avatar1'),
   },
   {
     id: 'organize-chores',
     title: 'Organize Chores',
     description: 'Assign and track household chores.',
     href: '/dashboard/chores',
-    image: PlaceHolderImages.find(img => img.id === 'avatar2'),
+    image: PlaceHolderImages.find((img) => img.id === 'avatar2'),
   },
   {
     id: 'group-chat',
     title: 'Group Chat',
     description: 'Communicate with your housemates.',
     href: '/dashboard/chat',
-    image: PlaceHolderImages.find(img => img.id === 'avatar3'),
+    image: PlaceHolderImages.find((img) => img.id === 'avatar3'),
   },
 ];
 
@@ -73,7 +73,7 @@ export default function LandingGrid() {
                   </p>
                 </div>
                 <div className="relative z-10 flex justify-end">
-                   <ArrowRight className="h-6 w-6 text-white/80 group-hover:text-white transition-colors" />
+                  <ArrowRight className="h-6 w-6 text-white/80 group-hover:text-white transition-colors" />
                 </div>
               </div>
             </Link>
