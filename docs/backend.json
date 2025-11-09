@@ -1,0 +1,461 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user in the CoLiveAssist application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user.",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the user.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number of the user."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email"
+      ]
+    },
+    "RoommatePreference": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "RoommatePreference",
+      "type": "object",
+      "description": "Represents the roommate preferences of a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the roommate preference.",
+          "format": "uuid"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:1 RoommatePreference)"
+        },
+        "genderPreference": {
+          "type": "string",
+          "description": "The preferred gender of the roommate (Male / Female / Any)."
+        },
+        "smoking": {
+          "type": "string",
+          "description": "Smoking preference (Yes / No / Occasionally / Doesn’t matter)."
+        },
+        "drinking": {
+          "type": "string",
+          "description": "Drinking preference (Yes / No / Occasionally / Doesn’t matter)."
+        },
+        "cleanlinessLevel": {
+          "type": "string",
+          "description": "Cleanliness level preference (Very neat / Average / Doesn’t matter)."
+        },
+        "sleepSchedule": {
+          "type": "string",
+          "description": "Sleep schedule preference (Early sleeper / Night owl / Flexible)."
+        },
+        "guestsAllowed": {
+          "type": "string",
+          "description": "Guests allowed preference (Yes / No / Occasionally)."
+        },
+        "cookingHabits": {
+          "type": "string",
+          "description": "Cooking habits preference (Cooks often / Rarely / Eats out)."
+        },
+        "noiseTolerance": {
+          "type": "string",
+          "description": "Noise tolerance preference (Quiet / Social / Doesn’t matter)."
+        }
+      },
+      "required": [
+        "id",
+        "userId"
+      ]
+    },
+    "RoomPreference": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "RoomPreference",
+      "type": "object",
+      "description": "Represents the room preferences of a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the room preference.",
+          "format": "uuid"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:1 RoomPreference)"
+        },
+        "foodPreference": {
+          "type": "string",
+          "description": "Food preference (Veg / Non-veg / Eggetarian / Doesn’t matter)."
+        },
+        "furnishing": {
+          "type": "string",
+          "description": "Furnishing preference (Fully furnished / Semi-furnished / Unfurnished)."
+        },
+        "attachedBathroom": {
+          "type": "boolean",
+          "description": "Indicates if an attached bathroom is preferred (Yes / No)."
+        },
+        "budgetRange": {
+          "type": "number",
+          "description": "Budget range (₹ per month)."
+        },
+        "preferredLocation": {
+          "type": "string",
+          "description": "Preferred location / distance from workplace/college."
+        },
+        "amenitiesRequired": {
+          "type": "array",
+          "description": "Amenities required (Wi-Fi, AC, Kitchen, Washing Machine, etc.).",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "userId"
+      ]
+    },
+    "RoommateGroup": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "RoommateGroup",
+      "type": "object",
+      "description": "Represents a group of roommates sharing a living space.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the roommate group.",
+          "format": "uuid"
+        },
+        "roommateIds": {
+          "type": "array",
+          "description": "References to Users who are in the roommate group. (Relationship: User N:N RoommateGroup)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rentSplit": {
+          "type": "number",
+          "description": "The agreed-upon rent split for the group."
+        }
+      },
+      "required": [
+        "id",
+        "roommateIds"
+      ]
+    },
+    "Bill": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Bill",
+      "type": "object",
+      "description": "Represents a bill associated with a roommate group.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the bill.",
+          "format": "uuid"
+        },
+        "roommateGroupId": {
+          "type": "string",
+          "description": "Reference to RoommateGroup. (Relationship: RoommateGroup 1:N Bill)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the bill."
+        },
+        "amount": {
+          "type": "number",
+          "description": "The total amount of the bill."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "The due date for the bill.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "roommateGroupId",
+        "description",
+        "amount",
+        "dueDate"
+      ]
+    },
+    "Chore": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Chore",
+      "type": "object",
+      "description": "Represents a chore assigned to a roommate.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the chore.",
+          "format": "uuid"
+        },
+        "roommateGroupId": {
+          "type": "string",
+          "description": "Reference to RoommateGroup. (Relationship: RoommateGroup 1:N Chore)"
+        },
+        "assignedToUserId": {
+          "type": "string",
+          "description": "Reference to User who is assigned the chore. (Relationship: User 1:N Chore)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the chore."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "The due date for the chore.",
+          "format": "date-time"
+        },
+        "isCompleted": {
+          "type": "boolean",
+          "description": "Indicates if the chore is completed."
+        }
+      },
+      "required": [
+        "id",
+        "roommateGroupId",
+        "assignedToUserId",
+        "description",
+        "dueDate"
+      ]
+    },
+    "Complaint": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Complaint",
+      "type": "object",
+      "description": "Represents a complaint submitted by a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the complaint.",
+          "format": "uuid"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N Complaint)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the complaint."
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "The date the complaint was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "description",
+        "submissionDate"
+      ]
+    },
+    "Feedback": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Feedback",
+      "type": "object",
+      "description": "Represents feedback provided by a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the feedback.",
+          "format": "uuid"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N Feedback)"
+        },
+        "comment": {
+          "type": "string",
+          "description": "The feedback comment."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date the feedback was given.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "comment",
+        "date"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles. Access is restricted to the user themselves.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/roommatePreferences/{roommatePreferenceId}",
+        "definition": {
+          "entityName": "RoommatePreference",
+          "schema": {
+            "$ref": "#/backend/entities/RoommatePreference"
+          },
+          "description": "Stores roommate preferences for each user. Access is restricted to the user themselves.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "roommatePreferenceId",
+              "description": "The unique identifier of the roommate preference."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/roomPreferences/{roomPreferenceId}",
+        "definition": {
+          "entityName": "RoomPreference",
+          "schema": {
+            "$ref": "#/backend/entities/RoomPreference"
+          },
+          "description": "Stores room preferences for each user. Access is restricted to the user themselves.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "roomPreferenceId",
+              "description": "The unique identifier of the room preference."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roommateGroups/{roommateGroupId}",
+        "definition": {
+          "entityName": "RoommateGroup",
+          "schema": {
+            "$ref": "#/backend/entities/RoommateGroup"
+          },
+          "description": "Represents groups of roommates. Includes a 'members' map for authorization independence.",
+          "params": [
+            {
+              "name": "roommateGroupId",
+              "description": "The unique identifier of the roommate group."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roommateGroups/{roommateGroupId}/bills/{billId}",
+        "definition": {
+          "entityName": "Bill",
+          "schema": {
+            "$ref": "#/backend/entities/Bill"
+          },
+          "description": "Stores bills associated with a roommate group. Includes denormalized 'members' map from the parent roommateGroup document for authorization independence.",
+          "params": [
+            {
+              "name": "roommateGroupId",
+              "description": "The unique identifier of the roommate group."
+            },
+            {
+              "name": "billId",
+              "description": "The unique identifier of the bill."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roommateGroups/{roommateGroupId}/chores/{choreId}",
+        "definition": {
+          "entityName": "Chore",
+          "schema": {
+            "$ref": "#/backend/entities/Chore"
+          },
+          "description": "Stores chores assigned to roommates within a group. Includes denormalized 'members' map from the parent roommateGroup document to check user's group membership for authorization independence.",
+          "params": [
+            {
+              "name": "roommateGroupId",
+              "description": "The unique identifier of the roommate group."
+            },
+            {
+              "name": "choreId",
+              "description": "The unique identifier of the chore."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/complaints/{complaintId}",
+        "definition": {
+          "entityName": "Complaint",
+          "schema": {
+            "$ref": "#/backend/entities/Complaint"
+          },
+          "description": "Stores user complaints. Limited to the submitter.",
+          "params": [
+            {
+              "name": "complaintId",
+              "description": "The unique identifier of the complaint."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/feedback/{feedbackId}",
+        "definition": {
+          "entityName": "Feedback",
+          "schema": {
+            "$ref": "#/backend/entities/Feedback"
+          },
+          "description": "Stores feedback provided by users. Limited to the submitter.",
+          "params": [
+            {
+              "name": "feedbackId",
+              "description": "The unique identifier of the feedback."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to support the CoLiveAssist application, focusing on roommate matching and co-living management. The core principle is to ensure Authorization Independence by denormalizing necessary authorization data. This avoids the need for `get()` calls in security rules, which enhances the atomicity of operations (transactions/batches) and simplifies debugging. The structure employs path-based ownership for user-specific data and membership maps for collaborative data. Structural Segregation is used to keep data with similar access requirements within the same collections, simplifying security rules and enabling secure `list` operations (QAPs). Here's how the entities are structured:\n\n*   **/users/{userId}**: Stores user profiles. Access is restricted to the user themselves.\n*   **/users/{userId}/roommatePreferences/{roommatePreferenceId}**: Stores roommate preferences for each user. This is a subcollection of `/users/{userId}`, ensuring only the user can access their preferences. \n*   **/users/{userId}/roomPreferences/{roomPreferenceId}**: Stores room preferences for each user, similar to roommate preferences. The structure ensures ownership and simplifies security rules.\n*   **/roommateGroups/{roommateGroupId}**: Represents groups of roommates. The `roommateIds` field lists the IDs of users within the group. To ensure Authorization Independence, a `members` map is added. This map contains the UIDs of group members as keys and their roles (e.g., 'member') as values.  This structure supports QAPs by making group membership explicit within the document itself, enabling list operations scoped to a user's group memberships.\n*   **/roommateGroups/{roommateGroupId}/bills/{billId}**: Stores bills associated with a roommate group. Includes denormalized `members` from the parent `roommateGroup` document for authorization independence.\n*   **/roommateGroups/{roommateGroupId}/chores/{choreId}**: Stores chores assigned to roommates within a group. Includes denormalized `members` from the parent `roommateGroup` document to check user's group membership for authorization independence. Includes `assignedToUserId` to specify which user is assigned to this chore.\n*   **/complaints/{complaintId}**: Stores user complaints. User id is stored to trace the user who send the complaint. Limited to the submitter.\n*   **/feedback/{feedbackId}**: Stores feedback provided by users, with the same access restrictions as complaints.\n\nThis structure promotes clarity, security, and scalability, aligning with the core design principles of Authorization Independence, DBAC, QAPs, and structural segregation."
+  }
+}
