@@ -11,7 +11,7 @@ const gridItems = [
     title: 'Find Your Tribe',
     description: 'AI-powered matching to find compatible roommates.',
     href: '/dashboard/find-roommate',
-    image: PlaceHolderImages.find((img) => img.id === 'heroImage'),
+    image: null,
   },
   {
     id: 'manage-bills',
@@ -32,7 +32,7 @@ const gridItems = [
     title: 'Group Chat',
     description: 'Communicate with your housemates.',
     href: '/dashboard/chat',
-    image: PlaceHolderImages.find((img) => img.id === 'avatar3'),
+    image: PlaceHolderImages.find((img) => img.id === 'group-chat'),
   },
 ];
 
@@ -61,20 +61,28 @@ export default function LandingGrid() {
               <div
                 className={`group relative aspect-[4/3] bg-cover bg-center p-6 flex flex-col justify-between text-white ${
                   index % 2 !== 0 ? 'md:mt-16' : ''
-                }`}
-                style={{ backgroundImage: `url(${item.image?.imageUrl})` }}
+                } ${!item.image ? 'bg-card' : ''}`}
+                style={{
+                  backgroundImage: item.image ? `url(${item.image.imageUrl})` : 'none',
+                }}
               >
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300" />
-                <div className="relative z-10">
+                {item.image && (
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300" />
+                )}
+                <div className={`relative z-10 ${!item.image ? 'text-card-foreground' : ''}`}>
                   <h2 className="text-xl font-semibold uppercase tracking-wider">
                     {item.title}
                   </h2>
-                  <p className="mt-2 text-sm text-white/80">
+                  <p className={`mt-2 text-sm ${!item.image ? 'text-muted-foreground' : 'text-white/80'}`}>
                     {item.description}
                   </p>
                 </div>
                 <div className="relative z-10 flex justify-end">
-                  <ArrowRight className="h-6 w-6 text-white/80 group-hover:text-white transition-colors" />
+                  <ArrowRight
+                    className={`h-6 w-6 transition-colors ${
+                      !item.image ? 'text-muted-foreground group-hover:text-card-foreground' : 'text-white/80 group-hover:text-white'
+                    }`}
+                  />
                 </div>
               </div>
             </Link>
