@@ -85,8 +85,8 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
       await addDocumentNonBlocking(groupsCollection, newGroup);
 
       toast({
-        title: 'Household Created!',
-        description: "You're all set. Redirecting to your new dashboard.",
+        title: 'Congratulations!',
+        description: 'Your new household is ready. Welcome home!',
       });
       router.push('/dashboard');
     } catch (error) {
