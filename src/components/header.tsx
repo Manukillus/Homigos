@@ -1,7 +1,7 @@
 'use client';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from './ui/button';
-import { ArrowLeft, Bell } from 'lucide-react';
+import { ArrowLeft, Bell, User, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import {
   DropdownMenu,
@@ -13,6 +13,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Badge } from './ui/badge';
 import { ThemeToggle } from './theme-toggle';
+import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
+import Link from 'next/link';
 
 type HeaderProps = {
   title: string;
@@ -74,6 +76,40 @@ export default function Header({ title, showBackButton = false }: HeaderProps) {
                 </DropdownMenuContent>
             </DropdownMenu>
             <ThemeToggle />
+             <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-9 w-9">
+                    <AvatarImage src="https://images.unsplash.com/photo-1750535135451-7c20e24b60c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBhdmF0YXJ8ZW58MHx8fHwxNzYyNjM2NDA5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="User Avatar" />
+                    <AvatarFallback>U</AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">User</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      user@example.com
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                    <Link href="/dashboard/settings">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Settings</span>
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                    <Link href="/">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                    </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
         </div>
       </div>
     </header>
