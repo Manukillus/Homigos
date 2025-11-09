@@ -3,13 +3,13 @@
     {
       "id": "heroImage",
       "description": "An AI-generated artistic image of a diverse group of friends in a stylish, modern living room, conveying a sense of community.",
-      "imageUrl": "https://images.unsplash.com/photo-1551847609-5aaf21a58ebc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmllbmRzJTIwY29tbXVuaXR5fGVufDB8fHx8MTc2MjY5Mjc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580849279061-0179c4ebf14e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmcmllbmRzJTIwY29tbXVuaXR5fGVufDB8fHx8MTc2MjY5Mjc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "friends community"
     },
     {
       "id": "avatar1",
       "description": "An AI-generated stylized image of a calculator and currency symbols, representing bill management.",
-      "imageUrl": "https://images.unsplash.com/photo-1758519291442-6a34815b0ae3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiaWxsJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjI2OTI3ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1655643116287-3eca9df95f05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmlsbCUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzYyNjkyNzgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "bill management"
     },
     {
@@ -20,9 +20,9 @@
     },
     {
       "id": "avatar3",
-      "description": "An AI-generated abstract image of interconnected speech bubbles, representing communication and group chat.",
+      "description": "An AI-generated image of a person holding a phone that displays a message-style user interface, representing the group chat feature.",
       "imageUrl": "https://images.unsplash.com/photo-1551845843-8520a9208f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncm91cCUyMGNoYXR8ZW58MHx8fHwxNzYyNjkyNzc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "group chat"
+      "imageHint": "phone messages"
     },
     {
       "id": "avatar4",
