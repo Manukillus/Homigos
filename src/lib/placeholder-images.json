@@ -2,27 +2,27 @@
   "placeholderImages": [
     {
       "id": "heroImage",
-      "description": "An AI-generated artistic image of a diverse group of young Indian friends in a stylish, modern apartment living room in a city like Indore, conveying a sense of community.",
+      "description": "An AI-generated artistic image of a diverse group of young Indian friends laughing and talking in a modern, stylish apartment living room with warm, inviting indoor lighting.",
       "imageUrl": "https://images.unsplash.com/photo-1552084044-a636d45b4545?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxJbmRpYW4lMjBmcmllbmRzJTIwaW5kb29yfGVufDB8fHx8MTc2Mjg4ODM3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "Indian friends community"
+      "imageHint": "friends indoor living room"
     },
     {
       "id": "avatar1",
-      "description": "An AI-generated image of a person at a desk in a modern Indian home, with a laptop showing a spreadsheet, a calculator, and a cup of chai, representing bill management.",
+      "description": "An AI-generated image of a person sitting at a wooden desk in a cozy, well-lit room, using a laptop with a budgeting spreadsheet open. A calculator and a cup of chai are on the desk, suggesting financial management in a home setting.",
       "imageUrl": "https://images.unsplash.com/photo-1593344484962-796b36d48b13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxJbmRpYW4lMjBob21lJTIwZmluYW5jZXxlbnwwfHx8fDE3NjI4ODg0NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "Indian bill management"
+      "imageHint": "indoor bill management"
     },
     {
       "id": "avatar2",
-      "description": "An AI-generated image of a clean, contemporary Indian kitchen with a whiteboard on the wall displaying a chore list.",
+      "description": "An AI-generated image of a clean, contemporary Indian kitchen with a whiteboard on the wall displaying a chore list, with soft indoor lighting.",
       "imageUrl": "https://images.unsplash.com/photo-1627483262268-9c2b5b2834b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxJbmRpYW4lMjBraXRjaGVufGVufDB8fHx8MTc2Mjg4ODQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "Indian kitchen chore"
+      "imageHint": "indoor kitchen chore"
     },
     {
       "id": "avatar3",
-      "description": "An AI-generated image of a young Indian person sitting on a balcony with a city view, smiling while looking at a group chat on their smartphone.",
+      "description": "An AI-generated image of a young Indian person sitting on a comfortable couch indoors, smiling while looking at a group chat on their smartphone.",
       "imageUrl": "https://images.unsplash.com/photo-1600050802288-1a0679730d75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxJbmRpYW4lMjBwZXJzb24lMjBwaG9uZXxlbnwwfHx8fDE3NjI4ODg1MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "Indian person phone"
+      "imageHint": "indoor person phone"
     },
     {
       "id": "avatar4",
