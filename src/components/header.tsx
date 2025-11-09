@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Badge } from './ui/badge';
+import { ThemeToggle } from './theme-toggle';
 
 type HeaderProps = {
   title: string;
@@ -72,6 +73,7 @@ export default function Header({ title, showBackButton = false }: HeaderProps) {
                     )}
                 </DropdownMenuContent>
             </DropdownMenu>
+            <ThemeToggle />
         </div>
       </div>
     </header>
