@@ -3,7 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import type { Roommate } from '@/lib/types';
+import {
+  Roommate,
+  RoommateGroup,
+} from '@/lib/types';
 import {
   Card,
   CardContent,
@@ -19,7 +22,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useToast } from '@/hooks/use-toast';
-import { PartyPopper } from 'lucide-react';
+import { PartyPopper, Loader2 } from 'lucide-react';
+import { useUser, useFirestore, addDocumentNonBlocking } from '@/firebase';
+import { collection } from 'firebase/firestore';
 
 type RoommateResultsProps = {
   matches: Roommate[];
@@ -31,8 +36,11 @@ const avatarPlaceholders = PlaceHolderImages.filter((img) =>
 
 export default function RoommateResults({ matches }: RoommateResultsProps) {
   const [selectedRoommates, setSelectedRoommates] = useState<Roommate[]>([]);
+  const [isCreating, setIsCreating] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const { user } = useUser();
+  const firestore = useFirestore();
 
   const handleSelectToggle = (roommate: Roommate) => {
     setSelectedRoommates((prev) =>
@@ -42,21 +50,54 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
     );
   };
 
-  const handleCreateHousehold = () => {
+  const handleCreateHousehold = async () => {
     if (selectedRoommates.length === 0) {
       toast({
         title: 'No Roommates Selected',
-        description: 'Please select at least one roommate to create a household.',
+        description:
+          'Please select at least one roommate to create a household.',
         variant: 'destructive',
       });
       return;
     }
-    localStorage.setItem('homigos-household', JSON.stringify(selectedRoommates));
-    toast({
-      title: 'Household Created!',
-      description: "You're all set. Redirecting to your new dashboard.",
-    });
-    router.push('/dashboard');
+    if (!firestore || !user) {
+      toast({
+        title: 'Error',
+        description: 'You must be logged in to create a household.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsCreating(true);
+
+    const roommateIds = selectedRoommates.map((r) => r.name); // Using name as ID for now
+    const newGroup: Omit<RoommateGroup, 'id'> = {
+      roommates: selectedRoommates,
+      rentSplit: 45000 / (selectedRoommates.length + 1),
+      members: {
+        [user.uid]: 'member',
+      },
+    };
+
+    try {
+      const groupsCollection = collection(firestore, 'roommateGroups');
+      await addDocumentNonBlocking(groupsCollection, newGroup);
+
+      toast({
+        title: 'Household Created!',
+        description: "You're all set. Redirecting to your new dashboard.",
+      });
+      router.push('/dashboard');
+    } catch (error) {
+      console.error('Error creating household:', error);
+      toast({
+        title: 'Household Creation Failed',
+        description: 'Could not create the household. Please try again.',
+        variant: 'destructive',
+      });
+      setIsCreating(false);
+    }
   };
 
   return (
@@ -67,7 +108,7 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
           We found your potential Homigos!
         </h2>
         <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl mt-2">
-          Select the roommates you'd like to form a household with.
+          Select the roommates you&apos;d like to form a household with.
         </p>
       </div>
 
@@ -140,8 +181,11 @@ export default function RoommateResults({ matches }: RoommateResultsProps) {
         <Button
           size="lg"
           onClick={handleCreateHousehold}
-          disabled={selectedRoommates.length === 0}
+          disabled={selectedRoommates.length === 0 || isCreating}
         >
+          {isCreating ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : null}
           Create Household ({selectedRoommates.length} selected)
         </Button>
       </div>

@@ -18,10 +18,11 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { ClipboardList } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import type { RoommateGroup } from '@/lib/types';
+import { Loader2 } from 'lucide-react';
 
-type ChoresTrackerProps = {
-  roommates: Roommate[];
-};
 
 const initialChores = [
   { chore: 'Clean Kitchen', day: 'Monday', completed: false },
@@ -31,9 +32,27 @@ const initialChores = [
   { chore: 'Groceries', day: 'Friday', completed: false },
 ];
 
-export default function ChoresTracker({ roommates }: ChoresTrackerProps) {
+export default function ChoresTracker() {
   const { toast } = useToast();
   const [chores, setChores] = useState(initialChores);
+  const { user } = useUser();
+  const firestore = useFirestore();
+
+  const groupsQuery = useMemoFirebase(
+    () =>
+      user && firestore
+        ? query(
+            collection(firestore, 'roommateGroups'),
+            where(`members.${user.uid}`, '==', 'member')
+          )
+        : null,
+    [user, firestore]
+  );
+  
+  const { data: groups, isLoading: isGroupsLoading } =
+    useCollection<RoommateGroup>(groupsQuery);
+  const roommates = groups?.[0]?.roommates || [];
+
   const allMembers = [{ name: 'You' }, ...roommates];
 
   const handleChoreToggle = (choreName: string) => {
@@ -54,6 +73,22 @@ export default function ChoresTracker({ roommates }: ChoresTrackerProps) {
       return newChores;
     });
   };
+
+  if (isGroupsLoading) {
+    return (
+         <Card>
+            <CardHeader>
+                <div className="flex items-center gap-4">
+                <ClipboardList className="h-8 w-8 text-primary" />
+                <CardTitle className="font-headline text-xl">Chore Chart</CardTitle>
+                </div>
+            </CardHeader>
+            <CardContent className="h-48 flex items-center justify-center">
+                 <Loader2 className="h-8 w-8 animate-spin" />
+            </CardContent>
+         </Card>
+    )
+  }
 
   return (
     <Card>

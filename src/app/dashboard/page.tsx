@@ -1,33 +1,44 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import type { Roommate } from '@/lib/types';
 import RentSplit from '@/components/dashboard/rent-split';
 import ChoresTracker from '@/components/dashboard/chores-tracker';
 import BillsTracker from '@/components/dashboard/bills-tracker';
 import { Button } from '@/components/ui/button';
 import { Loader2, Home } from 'lucide-react';
 import Header from '@/components/header';
+import { useAuthRedirect } from '@/hooks/use-auth-redirect';
+import {
+  useUser,
+  useFirestore,
+  useCollection,
+  useMemoFirebase,
+} from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import type { RoommateGroup } from '@/lib/types';
 
 export default function DashboardPage() {
-  const [household, setHousehold] = useState<Roommate[] | null>(null);
+  const { user, isUserLoading } = useUser();
+  const firestore = useFirestore();
+  useAuthRedirect();
 
-  useEffect(() => {
-    try {
-      const storedHousehold = localStorage.getItem('homigos-household');
-      if (storedHousehold) {
-        setHousehold(JSON.parse(storedHousehold));
-      } else {
-        setHousehold([]); // No household found
-      }
-    } catch (error) {
-      console.error('Failed to parse household data from localStorage', error);
-      setHousehold([]);
-    }
-  }, []);
+  const groupsQuery = useMemoFirebase(
+    () =>
+      user && firestore
+        ? query(
+            collection(firestore, 'roommateGroups'),
+            where(`members.${user.uid}`, '==', 'member')
+          )
+        : null,
+    [user, firestore]
+  );
 
-  if (household === null) {
+  const { data: groups, isLoading: isGroupsLoading } =
+    useCollection<RoommateGroup>(groupsQuery);
+
+  const currentGroup = groups?.[0];
+
+  if (isUserLoading || isGroupsLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -35,7 +46,7 @@ export default function DashboardPage() {
     );
   }
 
-  if (household.length === 0) {
+  if (!currentGroup) {
     return (
       <>
         <Header title="Dashboard" />
@@ -45,10 +56,12 @@ export default function DashboardPage() {
             No Household Found
           </h2>
           <p className="mt-2 text-muted-foreground">
-            It looks like you haven&apos;t created a household yet.
+            It looks like you haven&apos;t created or joined a household yet.
           </p>
           <Button asChild className="mt-6">
-            <Link href="/dashboard/find-roommate">Find Roommates to Get Started</Link>
+            <Link href="/dashboard/find-roommate">
+              Find Roommates to Get Started
+            </Link>
           </Button>
         </div>
       </>
@@ -62,10 +75,10 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             <BillsTracker />
-            <ChoresTracker roommates={household} />
+            <ChoresTracker />
           </div>
           <div className="lg:col-span-1 space-y-6">
-            <RentSplit roommates={household} />
+            <RentSplit roommates={currentGroup.roommates} />
           </div>
         </div>
       </div>

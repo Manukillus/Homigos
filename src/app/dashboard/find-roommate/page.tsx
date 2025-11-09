@@ -9,7 +9,7 @@ import RoommateResults from '@/components/roommate-results';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Header from '@/components/header';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { useAuthRedirect } from '@/hooks/use-auth-redirect';
 
 type Step = 'form' | 'loading' | 'results';
 
@@ -17,6 +17,7 @@ export default function FindRoommatePage() {
   const [step, setStep] = useState<Step>('form');
   const [matches, setMatches] = useState<Roommate[]>([]);
   const { toast } = useToast();
+  const { user, isLoading: isUserLoading } = useAuthRedirect();
 
   const handleFormSubmit = async (data: PreferencesFormValues) => {
     setStep('loading');
@@ -72,6 +73,14 @@ export default function FindRoommatePage() {
         return null;
     }
   };
+
+  if (isUserLoading) {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <Loader2 className="h-12 w-12 animate-spin" />
+        </div>
+    )
+  }
 
   return (
     <>

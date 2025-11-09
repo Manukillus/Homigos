@@ -1,25 +1,35 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import type { Roommate } from '@/lib/types';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import GroupChat from '@/components/dashboard/group-chat';
 import Header from '@/components/header';
 import { Loader2 } from 'lucide-react';
+import { collection, query, where } from 'firebase/firestore';
+import { useAuthRedirect } from '@/hooks/use-auth-redirect';
+import type { RoommateGroup } from '@/lib/types';
 
 export default function ChatPage() {
-  const [household, setHousehold] = useState<Roommate[] | null>(null);
+  const { user, isUserLoading } = useUser();
+  const firestore = useFirestore();
+  useAuthRedirect();
 
-  useEffect(() => {
-    try {
-      const storedHousehold = localStorage.getItem('homigos-household');
-      setHousehold(storedHousehold ? JSON.parse(storedHousehold) : []);
-    } catch (error) {
-      console.error('Failed to parse household data from localStorage', error);
-      setHousehold([]);
-    }
-  }, []);
+  const groupsQuery = useMemoFirebase(
+    () =>
+      user && firestore
+        ? query(
+            collection(firestore, 'roommateGroups'),
+            where(`members.${user.uid}`, '==', 'member')
+          )
+        : null,
+    [user, firestore]
+  );
 
-  if (household === null) {
+  const { data: groups, isLoading: isGroupsLoading } =
+    useCollection<RoommateGroup>(groupsQuery);
+
+  const currentGroup = groups?.[0];
+
+  if (isUserLoading || isGroupsLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -32,7 +42,7 @@ export default function ChatPage() {
       <Header title="Chat" />
       <div className="flex-1 overflow-hidden">
         <div className="h-full">
-            <GroupChat roommates={household} />
+          <GroupChat roommates={currentGroup?.roommates || []} />
         </div>
       </div>
     </div>
